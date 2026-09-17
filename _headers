@@ -1,0 +1,27 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; media-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()
+  Strict-Transport-Security: max-age=86400
+
+# Cache lifetimes. The test host (GitHub Pages) ignores this file entirely and
+# serves max-age=600 on everything, hashed assets included; these rules are for
+# Cloudflare Pages, where they are ours to set.
+#
+# Only the content-hashed bundles are immutable — a new build gives them a new
+# name, so a year is safe. The rest are unhashed paths whose contents can be
+# replaced by a re-encode, so they get a bounded day and no immutable flag; a
+# longer TTL there would strand a stale video or logo behind its own URL.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/video/*
+  Cache-Control: public, max-age=86400
+
+/logos-white-64/*
+  Cache-Control: public, max-age=86400
+
+/partners/*
+  Cache-Control: public, max-age=86400
