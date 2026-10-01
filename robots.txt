@@ -1,0 +1,3 @@
+# Test deployment — deliberately not indexed. See AUDIT.md D7.
+User-agent: *
+Disallow: /
